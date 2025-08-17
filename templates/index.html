@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF 셔플러</title>
+</head>
+<body>
+    <h1>PDF 셔플러</h1>
+
+    <h3>새 파일 업로드</h3>
+    <form action="/shuffle" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="application/pdf">
+        <input type="submit" value="업로드 및 셔플">
+    </form>
+
+    <hr>
+
+    <h3>업로드 기록</h3>
+    {% if history_files %}
+        <ul>
+            {% for file in history_files %}
+                <li>
+                    {{ file }}
+                    <form action="/shuffle-history/{{ file }}" method="post" style="display: inline;">
+                        <input type="submit" value="이 파일로 셔플">
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>업로드 기록이 없습니다.</p>
+    {% endif %}
+
+    <hr>
+
+    <h3>결과</h3>
+    {% if result_files %}
+        <ul>
+            {% for file in result_files %}
+                <li>
+                    <a href="/view-result/{{ file }}" target="_blank">{{ file }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>결과가 없습니다.</p>
+    {% endif %}
+
+</body>
+</html>

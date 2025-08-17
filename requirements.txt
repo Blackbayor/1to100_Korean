@@ -11,3 +11,4 @@ python-multipart
 PyMuPDF
 Pillow
 ultralytics
+jinja2

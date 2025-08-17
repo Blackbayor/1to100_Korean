@@ -19,7 +19,28 @@ This project aims to automatically extract and classify Korean language problems
     pip install -r requirements.txt
     ```
 
-2.  Run the service:
+2.  Run the web server:
     ```bash
-    uvicorn src.main:app --reload
+    uvicorn src.web_server:app --reload
     ```
+
+## Usage
+
+### CLI
+
+Run the full pipeline from the command line:
+
+```bash
+python -m src.main --pdf <PDF_파일경로>
+```
+
+### Web Server
+
+Start the FastAPI server and upload a PDF via browser:
+
+```bash
+uvicorn src.web_server:app --reload
+```
+
+Then open `http://localhost:8000` and upload a PDF to receive the shuffled result.
+

@@ -90,3 +90,11 @@ class Config:
     @property
     def gutter_margin_pt(self):
         return self.mm_to_pt(self.GUTTER_MARGIN_MM)
+
+    def set_request_id(self, request_id: str):
+        self.PROCESSED_DATA_DIR = os.path.join(self.DATA_DIR, 'processed', request_id)
+        self.IMAGE_DIR = os.path.join(self.PROCESSED_DATA_DIR, 'images')
+        self.SAMPLE_ANNOTATIONS_PATH = os.path.join(self.PROCESSED_DATA_DIR, 'sample_annotations.json')
+        self.CROPPED_COMPONENTS_DIR = os.path.join(self.PROCESSED_DATA_DIR, 'cropped_components')
+        self.INFERENCE_RESULTS_DIR = os.path.join(self.PROCESSED_DATA_DIR, 'inference_results')
+        self.RECOMBINED_PDF_OUTPUT_PATH = os.path.join(self.PROCESSED_DATA_DIR, 'recombined_output.pdf')
