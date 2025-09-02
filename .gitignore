@@ -22,4 +22,4 @@ models/
 aws/
 
 # Notebook checkpoints
-.ipynb_checkpoints\"runs/\" 
+.ipynb_checkpoints/ 

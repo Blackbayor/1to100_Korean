@@ -84,7 +84,7 @@ def recombine_pdf(
             
             # 1. 현재 컴포넌트가 header이고, 다음에 passage가 오는지 확인
             is_header_followed_by_passage = False
-            if component['label'] == 'header' and (i + 1) < len(unit) and unit[i + 1]['label'] == 'passage':
+            if component['class_name'] == 'header' and (i + 1) < len(unit) and unit[i + 1]['class_name'] == 'passage':
                 is_header_followed_by_passage = True
 
             # 2. 공간 확인
@@ -113,7 +113,7 @@ def recombine_pdf(
             rect = fitz.Rect(x_pos, current_y, x_pos + img_width, current_y + img_height)
             page.insert_image(rect, filename=image_path)
             
-            if component['label'] == "question_block":
+            if component['class_name'] == "question_block":
                 q_num_text = f"{current_question_num}."
                 text_pos = fitz.Point(
                     x_pos + cfg['question_number_offset_x'],
